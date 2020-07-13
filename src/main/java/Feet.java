@@ -1,7 +1,7 @@
 public class Feet {
         private double value;
 
-        public Feet(double value) {
+        public Feet(Double value) {
             this.value = value;
         }
 
