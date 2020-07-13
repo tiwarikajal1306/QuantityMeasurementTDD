@@ -2,6 +2,7 @@ import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
 
 public class Unit {
     int ONE_YARD_TO_FEET = 3;
+    int ONE_YARD_TO_INCH = 36;
 
     public enum UnitType {
         INCH,FEET,YARD
@@ -25,6 +26,8 @@ public class Unit {
 
         if (this.unitType.equals(UnitType.YARD) && type.unitType.equals(UnitType.FEET)) {
             return Double.compare(this.value * ONE_YARD_TO_FEET, type.value) == 0;
+        } else if(this.unitType.equals(UnitType.YARD) && type.unitType.equals(UnitType.INCH)) {
+            return Double.compare(this.value * ONE_YARD_TO_INCH, type.value) == 0;
         }
         return false;
     }
