@@ -5,7 +5,10 @@ public class Feet {
             this.value = value;
         }
 
-        @Override
+    public Feet() {
+    }
+
+    @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;

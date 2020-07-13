@@ -3,6 +3,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class QuantityTest {
+    Feet reference1 = new Feet();
 
     @Test
     public void Convert_FeetValue_IntoInches(){
@@ -35,5 +36,9 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
-
+    @Test
+    public void givenReferenceObject_WhenEqual_ShouldReturnTrue() {
+        Feet reference2 = new Feet(0.0);
+        Assert.assertEquals(reference1,reference2);
+    }
 }
