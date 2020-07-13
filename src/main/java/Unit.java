@@ -1,3 +1,5 @@
+import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
+
 public class Unit {
 
     public enum UnitType {
@@ -5,8 +7,13 @@ public class Unit {
     }
         private double value;
         public UnitType unitType;
-        public Unit(UnitType unitType,Double value) {
-            this.value = value;
+        public Unit(UnitType unitType,Double value) throws QuantityMeasurementException {
+            try{
+                this.value = value;
+            } catch (NullPointerException e) {
+                throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
+            }
+
             this.unitType = unitType;
         }
 
