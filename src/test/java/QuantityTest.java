@@ -97,4 +97,12 @@ public class QuantityTest {
        boolean result = yard.convert(feet);
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void givenOneFeet_AndOneYard_ShouldReturnFalseResult() throws QuantityMeasurementException {
+        Unit feet = new Unit(Unit.UnitType.FEET,1.0);
+        Unit yard = new Unit(Unit.UnitType.YARD,1.0);
+        boolean result = yard.convert(feet);
+        Assert.assertFalse(result);
+    }
 }
