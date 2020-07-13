@@ -2,8 +2,9 @@ import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
 
 public class Unit {
 
+
     public enum UnitType {
-        INCH,FEET
+        INCH,FEET,YARD
     }
         private double value;
         public UnitType unitType;
@@ -20,6 +21,10 @@ public class Unit {
     public Unit() {
     }
 
+    public boolean convert(Unit feet) {
+
+        return false;
+    }
 
     @Override
         public boolean equals(Object o) {

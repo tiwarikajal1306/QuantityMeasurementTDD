@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class QuantityTest {
-    Unit reference1 = new Unit();
+    //Unit reference1 = new Unit();
     QuantityMeasurement quantityMeasurement;
 
     @Test
@@ -35,8 +35,9 @@ public class QuantityTest {
 
     @Test
     public void givenReferenceObject_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
-        Unit reference2 = new Unit(Unit.UnitType.FEET,0.0);
-        Assert.assertEquals(reference1,reference2);
+        Unit feet1 = new Unit(Unit.UnitType.FEET,0.0);
+        Unit feet2 = new Unit(Unit.UnitType.FEET,0.0);
+        Assert.assertNotEquals(feet1, equals(feet2));
     }
 
     @Test
@@ -71,8 +72,9 @@ public class QuantityTest {
 
     @Test
     public void givenInchReferenceObject_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
-        Unit reference2 = new Unit(Unit.UnitType.INCH,0.0);
-        Assert.assertEquals(reference1,reference2);
+        Unit feet1 = new Unit(Unit.UnitType.INCH,0.0);
+        Unit feet2 = new Unit(Unit.UnitType.INCH,0.0);
+        Assert.assertNotEquals(feet1, equals(feet2));
     }
 
     @Test
@@ -80,5 +82,19 @@ public class QuantityTest {
         quantityMeasurement = new QuantityMeasurement();
         Unit unit1 = new Unit(Unit.UnitType.INCH,1.0);
         Assert.assertNotEquals(unit1.getClass(), quantityMeasurement.getClass());
+    }
+    @Test
+    public void givenDifferentInchValue_ShouldNotReturnEqual() throws QuantityMeasurementException {
+        Unit unit1 = new Unit(Unit.UnitType.INCH,1.0);
+        Unit unit2 = new Unit(Unit.UnitType.INCH,0.0);
+        Assert.assertNotEquals(unit1, unit2);
+    }
+
+    @Test
+    public void givenFeet_AndYard_ShouldReturnConvertedResult() throws QuantityMeasurementException {
+        Unit feet = new Unit(Unit.UnitType.FEET,3.0);
+        Unit yard = new Unit(Unit.UnitType.YARD,1.0);
+       boolean result = yard.convert(feet);
+        Assert.assertTrue(result);
     }
 }
