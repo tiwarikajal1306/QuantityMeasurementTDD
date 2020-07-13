@@ -1,3 +1,4 @@
+import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
 import com.quantitymeasurementtddproblem.services.QuantityMeasurement;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,4 +20,10 @@ public class QuantityTest {
         Assert.assertEquals(feet1, feet2);
     }
 
+    @Test
+    public void givenOneNullObject_ShouldReturnNotEqual() {
+            Feet feet1 = new Feet(0.0);
+            Feet feet2 = null;
+            Assert.assertNotEquals(feet1, feet2);
+    }
 }
