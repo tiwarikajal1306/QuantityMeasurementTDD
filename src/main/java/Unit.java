@@ -1,7 +1,7 @@
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
 
 public class Unit {
-
+    int ONE_YARD_TO_FEET = 3;
 
     public enum UnitType {
         INCH,FEET,YARD
@@ -21,8 +21,11 @@ public class Unit {
     public Unit() {
     }
 
-    public boolean convert(Unit feet) {
+    public boolean convert(Unit type) {
 
+        if (this.unitType.equals(UnitType.YARD) && type.unitType.equals(UnitType.FEET)) {
+            return Double.compare(this.value * ONE_YARD_TO_FEET, type.value) == 0;
+        }
         return false;
     }
 
