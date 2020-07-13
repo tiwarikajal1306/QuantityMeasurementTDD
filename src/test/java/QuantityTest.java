@@ -69,4 +69,9 @@ public class QuantityTest {
         }
     }
 
+    @Test
+    public void givenInchReferenceObject_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
+        Unit reference2 = new Unit(Unit.UnitType.INCH,0.0);
+        Assert.assertEquals(reference1,reference2);
+    }
 }
