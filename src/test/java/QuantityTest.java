@@ -11,4 +11,12 @@ public class QuantityTest {
         double inches = quantityMeasurement.convert(feet);
         Assert.assertEquals(12, inches,0.0);
     }
+
+    @Test
+    public void given0FeetAnd0Feet_ShouldReturnEqual() {
+        Feet feet1 = new Feet(0.0);
+        Feet feet2 = new Feet(0.0);
+        Assert.assertEquals(feet1, feet2);
+    }
+
 }
