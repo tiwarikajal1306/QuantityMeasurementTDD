@@ -1,3 +1,5 @@
+import com.quantitymeasurementtddproblem.services.QuantityMeasurement;
+
 public class Feet {
         private double value;
 
@@ -7,6 +9,7 @@ public class Feet {
 
     public Feet() {
     }
+
 
     @Override
         public boolean equals(Object o) {
