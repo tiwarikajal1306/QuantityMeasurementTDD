@@ -3,7 +3,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class QuantityTest {
-    Feet reference1 = new Feet();
+    Unit reference1 = new Unit();
     QuantityMeasurement quantityMeasurement;
 
     @Test
@@ -16,43 +16,44 @@ public class QuantityTest {
 
     @Test
     public void given0FeetAnd0Feet_ShouldReturnEqual() {
-        Feet feet1 = new Feet(0.0);
-        Feet feet2 = new Feet(0.0);
-        Assert.assertEquals(feet1, feet2);
+        Unit unit1 = new Unit(Unit.UnitType.FEET,0.0);
+        Unit unit2 = new Unit(Unit.UnitType.FEET,0.0);
+        Assert.assertEquals(unit1, unit2);
     }
 
     @Test
     public void givenOneNullObject_ShouldReturnFalse() {
-            Feet feet = new Feet(0.0);
-            Assert.assertFalse(feet.equals(null));
+            Unit unit = new Unit(Unit.UnitType.FEET,0.0);
+            Assert.assertFalse(unit.equals(null));
     }
 
     @Test
     public void givenOneNullObject_ShouldThrowException() throws NullPointerException {
         try {
-            Feet feet1 = new Feet(0.0);
-            Feet feet2 = new Feet(null);
-            Assert.assertEquals(feet1, feet2);
+            Unit unit1 = new Unit(Unit.UnitType.FEET,0.0);
+            Unit unit2 = new Unit(Unit.UnitType.FEET,null);
+            Assert.assertEquals(unit1, unit2);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
     @Test
     public void givenReferenceObject_WhenEqual_ShouldReturnTrue() {
-        Feet reference2 = new Feet(0.0);
+        Unit reference2 = new Unit(Unit.UnitType.FEET,0.0);
         Assert.assertEquals(reference1,reference2);
     }
 
     @Test
     public void givenSameTypeWhenCompare_ShouldReturnNotEqual() {
         quantityMeasurement = new QuantityMeasurement();
-        Feet feet1 = new Feet(1.0);
-        Assert.assertNotEquals(feet1.getClass(), quantityMeasurement.getClass());
+        Unit unit1 = new Unit(Unit.UnitType.FEET,1.0);
+        Assert.assertNotEquals(unit1.getClass(), quantityMeasurement.getClass());
     }
     @Test
     public void givenDifferentValue_ShouldNotReturnEqual() {
-        Feet feet1 = new Feet(1.0);
-        Feet feet2 = new Feet(0.0);
-        Assert.assertNotEquals(feet1, feet2);
+        Unit unit1 = new Unit(Unit.UnitType.FEET,1.0);
+        Unit unit2 = new Unit(Unit.UnitType.FEET,0.0);
+        Assert.assertNotEquals(unit1, unit2);
     }
+
 }
