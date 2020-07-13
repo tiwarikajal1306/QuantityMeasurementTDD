@@ -74,4 +74,11 @@ public class QuantityTest {
         Unit reference2 = new Unit(Unit.UnitType.INCH,0.0);
         Assert.assertEquals(reference1,reference2);
     }
+
+    @Test
+    public void givenInchSameTypeWhenCompare_ShouldReturnNotEqual() throws QuantityMeasurementException {
+        quantityMeasurement = new QuantityMeasurement();
+        Unit unit1 = new Unit(Unit.UnitType.INCH,1.0);
+        Assert.assertNotEquals(unit1.getClass(), quantityMeasurement.getClass());
+    }
 }
