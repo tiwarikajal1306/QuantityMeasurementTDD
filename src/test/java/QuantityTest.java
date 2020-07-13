@@ -55,5 +55,10 @@ public class QuantityTest {
         Unit unit2 = new Unit(Unit.UnitType.FEET,0.0);
         Assert.assertNotEquals(unit1, unit2);
     }
-
+    @Test
+    public void given0InchAnd0Inch_ShouldReturnEqual() {
+        Unit unit1 = new Unit(Unit.UnitType.INCH,0.0);
+        Unit unit2 = new Unit(Unit.UnitType.INCH,0.0);
+        Assert.assertEquals(unit1, unit2);
+    }
 }
