@@ -52,4 +52,10 @@ public class QuantityTest {
         double type2 = quantityMeasurement.convert(feet1);
             Assert.assertEquals(type1,type2,0.0);
     }
+    @Test
+    public void givenDifferentValue_ShouldNotReturnEqual() {
+        Feet feet1 = new Feet(1.0);
+        Feet feet2 = new Feet(0.0);
+        Assert.assertNotEquals(feet1, feet2);
+    }
 }
