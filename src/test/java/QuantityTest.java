@@ -44,13 +44,10 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenSameTypeWhenCompare_ShouldReturnTrue() {
+    public void givenSameTypeWhenCompare_ShouldReturnNotEqual() {
         quantityMeasurement = new QuantityMeasurement();
-        double feet = 1.0;
-        double feet1 = 1.0;
-        double type1 = quantityMeasurement.convert(feet);
-        double type2 = quantityMeasurement.convert(feet1);
-            Assert.assertEquals(type1,type2,0.0);
+        Feet feet1 = new Feet(1.0);
+        Assert.assertNotEquals(feet1.getClass(), quantityMeasurement.getClass());
     }
     @Test
     public void givenDifferentValue_ShouldNotReturnEqual() {
