@@ -156,16 +156,16 @@ public class QuantityTest {
         Assert.assertEquals(value1, value2, 0.0);
     }
 
-    /**
-     * given two equal centimeter values should riturn true
-     * @throws QuantityMeasurementException
-     */
     @Test
     public void givenZeroCentimeterAndZeroCentimeterValue_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
         double value1 = quantityMeasurement.unitConversion(Units.CM_TO_INCH, 0.0);
         double value2 = quantityMeasurement.unitConversion(Units.CM_TO_INCH, 0.0);
         Assert.assertEquals(value1, value2, 0.0);
     }
+
+    /**
+     * for null centimeter value
+     */
     @Test
     public void givenNullCentimeterValue_ShouldReturnFalse() {
         try {
