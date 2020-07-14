@@ -143,4 +143,32 @@ public class QuantityTest {
         double value2 = quantityMeasurement.unitConversion(Units.YARD_TO_INCH, 1.0);
         Assert.assertEquals(value1, value2, 0.0);
     }
+
+    /**
+     * Test case for Inch to centimeter
+     * @throws QuantityMeasurementException
+     */
+
+    @Test
+    public void givenTwoInchAndFiveCentimeter_WhenCompare_ShouldReturnTrue() throws QuantityMeasurementException {
+        double value1 = quantityMeasurement.unitConversion(Units.INCH, 2.0);
+        double value2 = quantityMeasurement.unitConversion(Units.CM_TO_INCH, 5.0);
+        Assert.assertEquals(value1, value2, 0.0);
+    }
+    @Test
+    public void givenZeroCentimeterAndZeroCentimeterValue_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
+        double value1 = quantityMeasurement.unitConversion(Units.CM_TO_INCH, 0.0);
+        double value2 = quantityMeasurement.unitConversion(Units.CM_TO_INCH, 0.0);
+        Assert.assertEquals(value1, value2, 0.0);
+    }
+    @Test
+    public void givenNullCentimeterValue_ShouldReturnFalse() {
+        try {
+            double value1 = quantityMeasurement.unitConversion(Units.CM_TO_INCH,0.0);
+            double value2 = quantityMeasurement.unitConversion(Units.CM_TO_INCH,null);
+        }catch (QuantityMeasurementException e) {
+            System.out.println(e.getMessage());
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.NULL_VALUE, e.type);
+        }
+    }
 }
