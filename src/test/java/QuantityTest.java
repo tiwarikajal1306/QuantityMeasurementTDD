@@ -1,18 +1,16 @@
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
-import com.quantitymeasurementtddproblem.services.QuantityMeasurement;
+import com.quantitymeasurementtddproblem.services.Unit;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class QuantityTest {
-    //Unit reference1 = new Unit();
-    QuantityMeasurement quantityMeasurement;
 
     @Test
-    public void Convert_FeetValue_IntoInches(){
-       quantityMeasurement = new QuantityMeasurement();
-        double feet = 1.0;
-        double inches = quantityMeasurement.convert(feet);
-        Assert.assertEquals(12, inches,0.0);
+    public void givenOneFeet_And12Inch_ShouldReturnConvertedResult() throws QuantityMeasurementException {
+        Unit feet = new Unit(Unit.UnitType.FEET,1.0);
+        Unit inch = new Unit(Unit.UnitType.INCH,12.0);
+        boolean result = feet.convert(inch);
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -41,10 +39,10 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenSameTypeWhenCompare_ShouldReturnNotEqual() throws QuantityMeasurementException {
-        quantityMeasurement = new QuantityMeasurement();
+    public void givenSameTypeWhenCompare_ShouldReturnTrue() throws QuantityMeasurementException {
         Unit unit1 = new Unit(Unit.UnitType.FEET,1.0);
-        Assert.assertNotEquals(unit1.getClass(), quantityMeasurement.getClass());
+        Unit unit2 = new Unit(Unit.UnitType.FEET,1.0);
+        Assert.assertEquals(unit1.getClass(), unit2.getClass());
     }
     @Test
     public void givenDifferentValue_ShouldNotReturnEqual() throws QuantityMeasurementException {
@@ -79,9 +77,9 @@ public class QuantityTest {
 
     @Test
     public void givenInchSameTypeWhenCompare_ShouldReturnNotEqual() throws QuantityMeasurementException {
-        quantityMeasurement = new QuantityMeasurement();
         Unit unit1 = new Unit(Unit.UnitType.INCH,1.0);
-        Assert.assertNotEquals(unit1.getClass(), quantityMeasurement.getClass());
+        Unit unit2 = new Unit(Unit.UnitType.INCH,1.0);
+        Assert.assertEquals(unit1.getClass(), unit2.getClass());
     }
     @Test
     public void givenDifferentInchValue_ShouldNotReturnEqual() throws QuantityMeasurementException {

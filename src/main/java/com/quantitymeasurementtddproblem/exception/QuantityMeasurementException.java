@@ -2,7 +2,7 @@ package com.quantitymeasurementtddproblem.exception;
 
 public class QuantityMeasurementException extends Exception {
     public enum ExceptionType {
-        NULL_VALUE, MISMATCHED_VALUE;
+        NULL_VALUE
 
     }
 
