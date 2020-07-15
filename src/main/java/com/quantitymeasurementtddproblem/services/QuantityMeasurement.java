@@ -1,6 +1,7 @@
 package com.quantitymeasurementtddproblem.services;
 
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
+import com.quantitymeasurementtddproblem.model.UnitQuantity;
 import com.quantitymeasurementtddproblem.model.Units;
 
 import java.util.Objects;
@@ -9,31 +10,29 @@ public class QuantityMeasurement {
 
    public Units units;
     public Double value;
-  // public Units units;
-
     public QuantityMeasurement() {
 
     }
+//
+//    public QuantityMeasurement(Units units, Double value) throws QuantityMeasurementException {
+//        try {
+//            this.units = units;
+//            this.value = value;
+//        } catch (NullPointerException e) {
+//            throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
+//        }
+//    }
 
-    public QuantityMeasurement(Units units, Double value) throws QuantityMeasurementException {
-        try {
-            this.units = units;
-            this.value = value;
-        } catch (NullPointerException e) {
-            throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
-        }
-    }
+//    public double unitConversion(Units units, Double value) throws QuantityMeasurementException {
+//        try {
+//            return value * units.constantValue;
+//        } catch (NullPointerException e) {
+//            throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
+//        }
+//    }
 
-    public double unitConversion(Units units, Double value) throws QuantityMeasurementException {
-        try {
-            return value * units.constantValue;
-        } catch (NullPointerException e) {
-            throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
-        }
-    }
-
-    public double addUnit( Double value, Double value2) {
-         double result = value + value2;
+    public double addUnit(UnitQuantity value, UnitQuantity value2) {
+         double result = value.value + value2.value;
          return result;
     }
 
