@@ -7,63 +7,36 @@ import java.util.Objects;
 
 public class QuantityMeasurement {
 
-    public enum UnitSet {
-        INCH, CM, YARD, FEET
-    }
-    UnitSet unitSet;
-    Double value;
+   public Double value;
+   public Units units;
+
     public QuantityMeasurement() {
 
     }
-    public QuantityMeasurement(UnitSet unitSet, Double value) throws QuantityMeasurementException {
+
+    public QuantityMeasurement(Units units, Double value) throws QuantityMeasurementException {
         try {
-            this.unitSet = unitSet;
+            this.units = units;
             this.value = value;
         } catch (NullPointerException e) {
             throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
         }
-        }
-
+    }
 
     public double unitConversion(Units units, Double value) throws QuantityMeasurementException {
-        try{
+        try {
             return value * units.constantValue;
         } catch (NullPointerException e) {
             throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
         }
     }
 
-//    @Override
-//    public boolean equals(Object obj) {
-//        return super.equals(obj);
-//    }
-
-
-    //    @Override
-//    public boolean equals(Object obj) {
-//        if(this == obj) return true;
-//        //if (this.getClass() == obj.getClass()) return true;
-//        if (obj == null || getClass() != obj.getClass()) return false;
-//        return super.equals(obj);
-//    }
-
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        QuantityMeasurement that = (QuantityMeasurement) o;
-//        return unitSet == that.unitSet;
-//    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         QuantityMeasurement that = (QuantityMeasurement) o;
-        return unitSet == that.unitSet &&
-                Objects.equals(value, that.value);
+        return Objects.equals(value, that.value) &&
+                units == that.units;
     }
-
 }

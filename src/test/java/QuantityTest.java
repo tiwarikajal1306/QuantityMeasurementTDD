@@ -14,13 +14,14 @@ public class QuantityTest {
     @Test
     public void givenOneFeet_And12Inch_ShouldReturnConvertedResult() throws QuantityMeasurementException {
         double value1 = quantityMeasurement.unitConversion(Units.FEET,1.0);
-        Assert.assertEquals(12, value1 ,0.0);
+        double value2 = quantityMeasurement.unitConversion(Units.INCH,12.0);
+        Assert.assertEquals(value1, value2 ,0.0);
     }
 
     @Test
     public void given0FeetAnd0Feet_ShouldReturnEqual() throws QuantityMeasurementException {
-        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(QuantityMeasurement.UnitSet.FEET, 0.0);
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(QuantityMeasurement.UnitSet.FEET, 0.0);
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 0.0);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 0.0);
         Assert.assertEquals(quantityMeasurement,quantityMeasurement1);
     }
 
@@ -28,10 +29,9 @@ public class QuantityTest {
     public void givenOneNullObject_ShouldReturnException() {
         try {
 
-            QuantityMeasurement quantityMeasurement = new QuantityMeasurement(QuantityMeasurement.UnitSet.FEET,0.0);
-            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(QuantityMeasurement.UnitSet.FEET, null);
+            QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET,0.0);
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, null);
         }catch (QuantityMeasurementException e) {
-            System.out.println(e.getMessage());
             Assert.assertEquals(QuantityMeasurementException.ExceptionType.NULL_VALUE, e.type);
         }
     }
@@ -43,8 +43,8 @@ public class QuantityTest {
 
     @Test
     public void givenSameTypeWhenCompare_ShouldReturnTrue() throws QuantityMeasurementException {
-        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(QuantityMeasurement.UnitSet.FEET, 0.0);
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(QuantityMeasurement.UnitSet.FEET, 0.0);
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 0.0);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 0.0);
         Assert.assertEquals(quantityMeasurement.getClass(), quantityMeasurement1.getClass());
     }
     @Test
@@ -56,8 +56,8 @@ public class QuantityTest {
 
     @Test
     public void givenDifferentValue_ShouldNotReturnEqual() throws QuantityMeasurementException {
-        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(QuantityMeasurement.UnitSet.FEET, 0.0);
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(QuantityMeasurement.UnitSet.FEET, 1.0);
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 0.0);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1.0);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -67,8 +67,8 @@ public class QuantityTest {
      */
     @Test
     public void given0InchAnd0Inch_ShouldReturnEqual() throws QuantityMeasurementException {
-        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(QuantityMeasurement.UnitSet.INCH, 0.0);
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(QuantityMeasurement.UnitSet.INCH, 0.0);
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 0.0);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 0.0);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -102,8 +102,8 @@ public class QuantityTest {
     }
     @Test
     public void givenDifferentInchValue_ShouldNotReturnEqual() throws QuantityMeasurementException {
-        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(QuantityMeasurement.UnitSet.INCH, 0.0);
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(QuantityMeasurement.UnitSet.INCH, 1.0);
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 0.0);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 1.0);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -111,6 +111,15 @@ public class QuantityTest {
      * Test case for Feet to yard conversion
      * @throws QuantityMeasurementException
      */
+
+
+    @Test
+    public void givenSameYardValue_ShouldReturnEqual() throws QuantityMeasurementException {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.YARD, 0.0);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.YARD, 0.0);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
+
     @Test
     public void givenOneYARD_AndThreeFeet_ShouldReturnConvertedResult() throws QuantityMeasurementException {
         double value1 = quantityMeasurement.unitConversion(Units.YARD,1.0);
@@ -166,8 +175,8 @@ public class QuantityTest {
 
     @Test
     public void givenZeroCentimeterAndZeroCentimeterValue_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
-        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(QuantityMeasurement.UnitSet.CM, 0.0);
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(QuantityMeasurement.UnitSet.CM, 0.0);
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.CM, 0.0);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.CM, 0.0);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -181,4 +190,12 @@ public class QuantityTest {
             Assert.assertEquals(QuantityMeasurementException.ExceptionType.NULL_VALUE, e.type);
         }
     }
+
+    @Test
+    public void givenTwoInchAndTwoInch_WhenAdded_ShouldReturnFourInch() throws QuantityMeasurementException {
+        double value1 = quantityMeasurement.unitConversion(Units.INCH, 2.0);
+        double value2 = quantityMeasurement.unitConversion(Units.INCH, 2.0);
+        Assert.assertEquals(4,value1+value2, 0.0);
+    }
+
 }
