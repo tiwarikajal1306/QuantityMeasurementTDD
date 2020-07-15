@@ -1,13 +1,13 @@
 package com.quantitymeasurementtddproblem.services;
 
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
-import com.quantitymeasurementtddproblem.model.Length;
+import com.quantitymeasurementtddproblem.model.Length.Units;
 
 import java.util.Objects;
 
 public class QuantityMeasurement {
 
-   public Length.Units units;
+   public Units units;
     public Double value;
   // public Units units;
 
@@ -15,7 +15,7 @@ public class QuantityMeasurement {
 
     }
 
-    public QuantityMeasurement(Length.Units units, Double value) throws QuantityMeasurementException {
+    public QuantityMeasurement(Units units, Double value) throws QuantityMeasurementException {
         try {
             this.units = units;
             this.value = value;
@@ -24,12 +24,17 @@ public class QuantityMeasurement {
         }
     }
 
-    public double unitConversion(Length.Units units, Double value) throws QuantityMeasurementException {
+    public double unitConversion(Units units, Double value) throws QuantityMeasurementException {
         try {
             return value * units.constantValue;
         } catch (NullPointerException e) {
             throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
         }
+    }
+
+    public double addUnit( Double value, Double value2) {
+         double result = value + value2;
+         return result;
     }
 
     @Override

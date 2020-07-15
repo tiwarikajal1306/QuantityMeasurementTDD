@@ -1,8 +1,10 @@
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
 import com.quantitymeasurementtddproblem.model.Length.Units;
+import com.quantitymeasurementtddproblem.model.Volume;
 import com.quantitymeasurementtddproblem.services.QuantityMeasurement;
 import org.junit.Assert;
 import org.junit.Test;
+
 
 public class QuantityTest {
     QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
@@ -202,26 +204,30 @@ public class QuantityTest {
     public void givenTwoInchAndTwoInch_WhenAdded_ShouldReturnFourInch() throws QuantityMeasurementException {
         double value1 = quantityMeasurement.unitConversion(Units.INCH, 2.0);
         double value2 = quantityMeasurement.unitConversion(Units.INCH, 2.0);
-        Assert.assertEquals(4, value1 + value2, 0.0);
+        double result = quantityMeasurement.addUnit(value1,value2);
+        Assert.assertEquals(4,result,0.0);
     }
 
     @Test
     public void givenOneFeetAndTwoInch_WhenAdded_ShouldReturnFourteenInch() throws QuantityMeasurementException {
         double value1 = quantityMeasurement.unitConversion(Units.FEET, 1.0);
         double value2 = quantityMeasurement.unitConversion(Units.INCH, 2.0);
-        Assert.assertEquals(14, value1 + value2, 0.0);
+        double result = quantityMeasurement.addUnit(value1,value2);
+        Assert.assertEquals(14, result, 0.0);
     }
 
     @Test
     public void givenOneFeetAndOneFeet_WhenAdded_ShouldReturnTwentyFourInch() throws QuantityMeasurementException {
         double value1 = quantityMeasurement.unitConversion(Units.FEET, 1.0);
         double value2 = quantityMeasurement.unitConversion(Units.FEET, 1.0);
-        Assert.assertEquals(24, value1 + value2, 0.0);
+        double result = quantityMeasurement.addUnit(value1,value2);
+        Assert.assertEquals(24, result, 0.0);
     }
     @Test
     public void givenTwoInchAndTwoAndHalfCentimeter_WhenAdded_ShouldReturnThreeInch() throws QuantityMeasurementException {
         double value1 = quantityMeasurement.unitConversion(Units.INCH, 2.0);
         double value2 = quantityMeasurement.unitConversion(Units.CM, 2.5);
-        Assert.assertEquals(3,value1+value2, 0.0);
+        double result = quantityMeasurement.addUnit(value1,value2);
+        Assert.assertEquals(3,result, 0.0);
     }
 }
