@@ -245,4 +245,13 @@ public class QuantityTest {
         Assert.assertEquals(value1, value2, 0.0);
     }
 
+    @Test
+    public void givenGallonAndLitre_WhenAdded_ShouldEqualToGivenLiterValue() throws QuantityMeasurementException {
+        double value1 = quantityMeasurement.unitConversion(Units.GALLON, 1.0);
+        double value2 = quantityMeasurement.unitConversion(Units.LITRES, 3.78);
+        double value3 = quantityMeasurement.unitConversion(Units.LITRES, 7.57);
+        double result = quantityMeasurement.addUnit(value1,value2);
+        Assert.assertEquals(result, value3,0.1);
+    }
+
 }
