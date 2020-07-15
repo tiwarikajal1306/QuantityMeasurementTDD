@@ -1,20 +1,21 @@
 package com.quantitymeasurementtddproblem.services;
 
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
-import com.quantitymeasurementtddproblem.model.Units;
+import com.quantitymeasurementtddproblem.model.Length;
 
 import java.util.Objects;
 
 public class QuantityMeasurement {
 
-   public Double value;
-   public Units units;
+   public Length.Units units;
+    public Double value;
+  // public Units units;
 
     public QuantityMeasurement() {
 
     }
 
-    public QuantityMeasurement(Units units, Double value) throws QuantityMeasurementException {
+    public QuantityMeasurement(Length.Units units, Double value) throws QuantityMeasurementException {
         try {
             this.units = units;
             this.value = value;
@@ -23,7 +24,7 @@ public class QuantityMeasurement {
         }
     }
 
-    public double unitConversion(Units units, Double value) throws QuantityMeasurementException {
+    public double unitConversion(Length.Units units, Double value) throws QuantityMeasurementException {
         try {
             return value * units.constantValue;
         } catch (NullPointerException e) {

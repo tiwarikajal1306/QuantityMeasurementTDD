@@ -1,5 +1,5 @@
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
-import com.quantitymeasurementtddproblem.model.Units;
+import com.quantitymeasurementtddproblem.model.Length.Units;
 import com.quantitymeasurementtddproblem.services.QuantityMeasurement;
 import org.junit.Assert;
 import org.junit.Test;
