@@ -1,5 +1,5 @@
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
-import com.quantitymeasurementtddproblem.model.Length.Units;
+import com.quantitymeasurementtddproblem.model.Units;
 import com.quantitymeasurementtddproblem.model.Volume;
 import com.quantitymeasurementtddproblem.services.QuantityMeasurement;
 import org.junit.Assert;
@@ -230,4 +230,19 @@ public class QuantityTest {
         double result = quantityMeasurement.addUnit(value1,value2);
         Assert.assertEquals(3,result, 0.0);
     }
+    @Test
+    public void givenOneGallonAndLitreValue_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
+        double value1 = quantityMeasurement.unitConversion(Units.GALLON, 1.0);
+        double value2 = quantityMeasurement.unitConversion(Units.LITRES, 3.78);
+        Assert.assertEquals(value1,value2, 0.0);
+
+    }
+
+    @Test
+    public void givenOneLitresAndOneThousandValue_WhenEqual_ShouldReturnTrue() throws QuantityMeasurementException {
+        double value1 = quantityMeasurement.unitConversion(Units.LITRES, 1.0);
+        double value2 = quantityMeasurement.unitConversion(Units.MILLILITERS, 1000.0);
+        Assert.assertEquals(value1, value2, 0.0);
+    }
+
 }

@@ -1,7 +1,7 @@
 package com.quantitymeasurementtddproblem.services;
 
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
-import com.quantitymeasurementtddproblem.model.Length.Units;
+import com.quantitymeasurementtddproblem.model.Units;
 
 import java.util.Objects;
 
