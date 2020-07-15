@@ -218,5 +218,10 @@ public class QuantityTest {
         double value2 = quantityMeasurement.unitConversion(Units.FEET, 1.0);
         Assert.assertEquals(24, value1 + value2, 0.0);
     }
-
+    @Test
+    public void givenTwoInchAndTwoAndHalfCentimeter_WhenAdded_ShouldReturnThreeInch() throws QuantityMeasurementException {
+        double value1 = quantityMeasurement.unitConversion(Units.INCH, 2.0);
+        double value2 = quantityMeasurement.unitConversion(Units.CM, 2.5);
+        Assert.assertEquals(3,value1+value2, 0.0);
+    }
 }
