@@ -246,12 +246,19 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenGallonAndLitre_WhenAdded_ShouldEqualToGivenLiterValue() throws QuantityMeasurementException {
+    public void givenGallonAndLitre_WhenAdded_ShouldEqualToGivenLitreValue() throws QuantityMeasurementException {
         double value1 = quantityMeasurement.unitConversion(Units.GALLON, 1.0);
         double value2 = quantityMeasurement.unitConversion(Units.LITRES, 3.78);
         double value3 = quantityMeasurement.unitConversion(Units.LITRES, 7.57);
         double result = quantityMeasurement.addUnit(value1,value2);
         Assert.assertEquals(result, value3,0.1);
     }
-
+    @Test
+    public void givenOneLitreAndThousandML_WhenAdded_ShouldEqualToGivenLitreValue() throws QuantityMeasurementException {
+        double value1 = quantityMeasurement.unitConversion(Units.LITRES, 1.0);
+        double value2 = quantityMeasurement.unitConversion(Units.MILLILITERS, 1000.0);
+        double value3 = quantityMeasurement.unitConversion(Units.LITRES, 2.0);
+        double result = quantityMeasurement.addUnit(value1,value2);
+        Assert.assertEquals(value3, result,0.1);
+    }
 }
