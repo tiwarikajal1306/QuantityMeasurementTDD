@@ -1,6 +1,4 @@
 package com.quantitymeasurementtddproblem.services;
-
-import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
 import com.quantitymeasurementtddproblem.model.UnitQuantity;
 import com.quantitymeasurementtddproblem.model.Units;
 
