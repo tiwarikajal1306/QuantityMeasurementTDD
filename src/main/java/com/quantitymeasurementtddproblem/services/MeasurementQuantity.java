@@ -1,11 +1,8 @@
 package com.quantitymeasurementtddproblem.services;
-
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
 import com.quantitymeasurementtddproblem.model.MeasurementType;
 import com.quantitymeasurementtddproblem.model.Units;
-
 import java.util.Objects;
-
 
 public class MeasurementQuantity {
     public Double value;
@@ -37,20 +34,6 @@ public class MeasurementQuantity {
         double result = value.value + value2.value;
         return result;
     }
-
-
-//    public double temperatureConversion(Double value, Units units) {
-//        switch (units) {
-//            case FAHRENHEIT:
-//                return value * FAHRENHEIT;
-//            case CELSIUS:
-//                return value * CELSIUS + 32;
-//        }
-//        return 0;
-//    }
-
-
-
 
     @Override
     public boolean equals(Object o) {

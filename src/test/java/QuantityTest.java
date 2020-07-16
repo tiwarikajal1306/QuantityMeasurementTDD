@@ -284,4 +284,15 @@ public class QuantityTest {
         double result = measurementQuantity.addUnit(measurementQuantity, measurementQuantity2);
         Assert.assertEquals(measurementQuantity3.value, result, 0.1);
     }
+    @Test
+    public void givenCelsiusTemperature0_ShouldReturnThirtyTwoFahrenheit() throws QuantityMeasurementException {
+        MeasurementQuantity measurementQuantity = new MeasurementQuantity(0.0, Units.CELSIUS);
+        Assert.assertEquals( 32.0, measurementQuantity.value, 0.0);
+    }
+
+    @Test
+    public void givenTwoHundredTwelveFahrenheitTemperature_ShouldReturnHundredCelsius() throws QuantityMeasurementException {
+        MeasurementQuantity measurementQuantity = new MeasurementQuantity(212.0, Units.FAHRENHEIT);
+        Assert.assertEquals( 100.0, measurementQuantity.value, 0.0);
+    }
 }
