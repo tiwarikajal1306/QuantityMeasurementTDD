@@ -307,4 +307,15 @@ public class QuantityTest {
             Assert.assertEquals(QuantityMeasurementException.ExceptionType.TYPE_MISTMATCH, e.type);
         }
     }
+
+    @Test
+    public void givenNegativeCentimeterValue_ShouldReturnFalse() {
+        try {
+
+            MeasurementQuantity measurementQuantity = new MeasurementQuantity(-8.0, Units.CM);
+        } catch (QuantityMeasurementException e) {
+            System.out.println(e.getMessage());
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.NEGATIVE_VALUE, e.type);
+        }
+    }
 }

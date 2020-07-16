@@ -4,6 +4,7 @@ import com.quantitymeasurementtddproblem.enums.Units;
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
 import com.quantitymeasurementtddproblem.services.Converter;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class MeasurementQuantity {
@@ -17,11 +18,14 @@ public class MeasurementQuantity {
 
     public MeasurementQuantity(Double value, Units units ) throws QuantityMeasurementException {
         try {
+            if(value < 0)
+                throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NEGATIVE_VALUE, "Negative value");
             this.value = converter.convertUnit(value, units);
             this.type = units.type;
         } catch (NullPointerException e){
             throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
         }
+
     }
 
     @Override
