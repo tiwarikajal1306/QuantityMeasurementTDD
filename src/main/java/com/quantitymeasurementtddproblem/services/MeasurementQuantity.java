@@ -1,14 +1,16 @@
-package com.quantitymeasurementtddproblem.model;
+package com.quantitymeasurementtddproblem.services;
 
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
+import com.quantitymeasurementtddproblem.model.MeasurementType;
+import com.quantitymeasurementtddproblem.model.Units;
 
 import java.util.Objects;
 
-public class UnitQuantity {
+public class MeasurementQuantity {
     public Units units;
     public Double value;
     public MeasurementType type;
-    public UnitQuantity() {
+    public MeasurementQuantity() {
     }
 
     public double convertUnit(Double value, Units units){
@@ -16,7 +18,7 @@ public class UnitQuantity {
         return result;
     }
 
-    public UnitQuantity(Double value, Units units ) throws QuantityMeasurementException {
+    public MeasurementQuantity(Double value, Units units ) throws QuantityMeasurementException {
         try {
 
             this.value = convertUnit(value, units);
@@ -26,11 +28,17 @@ public class UnitQuantity {
         }
     }
 
+    public double addUnit(MeasurementQuantity value, MeasurementQuantity value2) {
+        double result = value.value + value2.value;
+        return result;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UnitQuantity that = (UnitQuantity) o;
+        MeasurementQuantity that = (MeasurementQuantity) o;
         return units == that.units &&
                 Objects.equals(value, that.value) &&
                 type == that.type;
