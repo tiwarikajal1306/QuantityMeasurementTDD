@@ -1,10 +1,15 @@
-package com.quantitymeasurementtddproblem.services;
+package com.quantitymeasurementtddproblem.model;
+import com.quantitymeasurementtddproblem.enums.MeasurementType;
+import com.quantitymeasurementtddproblem.enums.Units;
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
-import com.quantitymeasurementtddproblem.model.MeasurementType;
-import com.quantitymeasurementtddproblem.model.Units;
+import com.quantitymeasurementtddproblem.services.Converter;
+
 import java.util.Objects;
 
 public class MeasurementQuantity {
+
+    Converter converter = new Converter();
+
     public Double value;
     public MeasurementType type;
     public MeasurementQuantity() {
@@ -12,27 +17,11 @@ public class MeasurementQuantity {
 
     public MeasurementQuantity(Double value, Units units ) throws QuantityMeasurementException {
         try {
-            this.value = convertUnit(value, units);
+            this.value = converter.convertUnit(value, units);
             this.type = units.type;
         } catch (NullPointerException e){
             throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
         }
-    }
-
-    public double convertUnit(Double value, Units units) {
-        switch (units) {
-            case FAHRENHEIT:
-                return (value - units.factor) * units.constantValue;
-            case CELSIUS:
-                return (value * units.constantValue) + units.factor;
-            default:
-               return value * units.constantValue;
-        }
-    }
-
-    public double addUnit(MeasurementQuantity value, MeasurementQuantity value2) {
-        double result = value.value + value2.value;
-        return result;
     }
 
     @Override

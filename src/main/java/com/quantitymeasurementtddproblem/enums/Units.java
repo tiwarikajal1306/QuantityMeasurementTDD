@@ -1,4 +1,4 @@
-package com.quantitymeasurementtddproblem.model;
+package com.quantitymeasurementtddproblem.enums;
 
 public enum Units {
     INCH(1.0, MeasurementType.LENGTH), FEET(12.0, MeasurementType.LENGTH),

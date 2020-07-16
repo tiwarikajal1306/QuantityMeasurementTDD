@@ -1,14 +1,15 @@
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
-import com.quantitymeasurementtddproblem.services.MeasurementQuantity;
-import com.quantitymeasurementtddproblem.model.Units;
+import com.quantitymeasurementtddproblem.services.Converter;
+import com.quantitymeasurementtddproblem.model.MeasurementQuantity;
+import com.quantitymeasurementtddproblem.enums.Units;
 import org.junit.Assert;
 import org.junit.Test;
 
 
 public class QuantityTest {
 
-      MeasurementQuantity measurementQuantity = new MeasurementQuantity();
-
+    MeasurementQuantity measurementQuantity = new MeasurementQuantity();
+    Converter converter = new Converter();
 
     /**
      * Test case for Feet to Inch
@@ -207,7 +208,7 @@ public class QuantityTest {
     public void givenTwoInchAndTwoInch_WhenAdded_ShouldReturnFourInch() throws QuantityMeasurementException {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(2.0, Units.INCH);
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(2.0, Units.INCH);
-        double result = measurementQuantity.addUnit(measurementQuantity, measurementQuantity2);
+        double result = converter.addUnit(measurementQuantity, measurementQuantity2);
         Assert.assertEquals(4,result,0.0);
     }
 
@@ -215,7 +216,7 @@ public class QuantityTest {
     public void givenOneFeetAndTwoInch_WhenAdded_ShouldReturnFourteenInch() throws QuantityMeasurementException {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(1.0, Units.FEET);
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(2.0, Units.INCH);
-        double result = measurementQuantity.addUnit(measurementQuantity, measurementQuantity2);
+        double result = converter.addUnit(measurementQuantity, measurementQuantity2);
         Assert.assertEquals(14, result, 0.0);
     }
 
@@ -223,14 +224,14 @@ public class QuantityTest {
     public void givenOneFeetAndOneFeet_WhenAdded_ShouldReturnTwentyFourInch() throws QuantityMeasurementException {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(1.0, Units.FEET);
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(1.0, Units.FEET);
-        double result = measurementQuantity.addUnit(measurementQuantity, measurementQuantity2);
+        double result = converter.addUnit(measurementQuantity, measurementQuantity2);
         Assert.assertEquals(24, result, 0.0);
     }
     @Test
     public void givenTwoInchAndTwoAndHalfCentimeter_WhenAdded_ShouldReturnThreeInch() throws QuantityMeasurementException {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(2.0, Units.INCH);
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(2.5, Units.CM);
-        double result = measurementQuantity.addUnit(measurementQuantity, measurementQuantity2);
+        double result = converter.addUnit(measurementQuantity, measurementQuantity2);
         Assert.assertEquals(3,result, 0.0);
     }
     @Test
@@ -253,7 +254,7 @@ public class QuantityTest {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(1.0, Units.GALLON);
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(3.78, Units.LITRES);
         MeasurementQuantity measurementQuantity3 = new MeasurementQuantity(7.57, Units.LITRES);
-        double result = measurementQuantity.addUnit(measurementQuantity, measurementQuantity2);
+        double result = converter.addUnit(measurementQuantity, measurementQuantity2);
         Assert.assertEquals(measurementQuantity3.value, result, 0.1);
     }
     @Test
@@ -261,7 +262,7 @@ public class QuantityTest {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(1.0, Units.LITRES);
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(1000.0, Units.MILLILITERS);
         MeasurementQuantity measurementQuantity3 = new MeasurementQuantity(2.0, Units.LITRES);
-        double result = measurementQuantity.addUnit(measurementQuantity, measurementQuantity2);
+        double result = converter.addUnit(measurementQuantity, measurementQuantity2);
         Assert.assertEquals(measurementQuantity3.value, result, 0.1);
     }
     @Test
@@ -281,7 +282,7 @@ public class QuantityTest {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(1.0, Units.TONNE);
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(1000.0, Units.GRAMS);
         MeasurementQuantity measurementQuantity3 = new MeasurementQuantity(1001.0, Units.KILOGRAMS);
-        double result = measurementQuantity.addUnit(measurementQuantity, measurementQuantity2);
+        double result = converter.addUnit(measurementQuantity, measurementQuantity2);
         Assert.assertEquals(measurementQuantity3.value, result, 0.1);
     }
     @Test
