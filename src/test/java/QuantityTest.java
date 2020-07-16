@@ -10,7 +10,6 @@ public class QuantityTest {
       MeasurementQuantity measurementQuantity = new MeasurementQuantity();
 
 
-
     /**
      * Test case for Feet to Inch
      *

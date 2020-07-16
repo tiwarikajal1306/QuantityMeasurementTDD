@@ -6,8 +6,10 @@ public enum Units {
     GALLON(3.78, MeasurementType.VOLUME), LITRES(1.0, MeasurementType.VOLUME),
     MILLILITERS(0.001, MeasurementType.VOLUME),  KILOGRAMS(1.0, MeasurementType.WEIGHT ),
     GRAMS(0.001, MeasurementType.WEIGHT),
-    TONNE(1000.0, MeasurementType.WEIGHT);
+    TONNE(1000.0, MeasurementType.WEIGHT), FAHRENHEIT(1.0, MeasurementType.TEMPERATURE, 32),
+    CELSIUS(1.8, MeasurementType.TEMPERATURE, 32);
 
+    public int factor;
     public MeasurementType type;
     public Double constantValue;
 
@@ -15,5 +17,11 @@ public enum Units {
             this.constantValue = constantValue;
             this.type = type;
         }
+
+    Units(double constantValue, MeasurementType type, int factor) {
+        this.constantValue = constantValue;
+        this.type = type;
+        this.factor = factor;
     }
+}
 

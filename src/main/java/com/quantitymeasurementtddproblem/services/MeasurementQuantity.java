@@ -6,25 +6,30 @@ import com.quantitymeasurementtddproblem.model.Units;
 
 import java.util.Objects;
 
+
 public class MeasurementQuantity {
-    public Units units;
     public Double value;
     public MeasurementType type;
     public MeasurementQuantity() {
     }
 
-    public double convertUnit(Double value, Units units){
-        double result = value * units.constantValue;
-        return result;
-    }
-
     public MeasurementQuantity(Double value, Units units ) throws QuantityMeasurementException {
         try {
-
             this.value = convertUnit(value, units);
             this.type = units.type;
         } catch (NullPointerException e){
             throw new QuantityMeasurementException(QuantityMeasurementException.ExceptionType.NULL_VALUE, "Null value");
+        }
+    }
+
+    public double convertUnit(Double value, Units units) {
+        switch (units) {
+            case FAHRENHEIT:
+                return (value - units.factor) * units.constantValue;
+            case CELSIUS:
+                return (value * units.constantValue) + units.factor;
+            default:
+               return value * units.constantValue;
         }
     }
 
@@ -34,14 +39,25 @@ public class MeasurementQuantity {
     }
 
 
+//    public double temperatureConversion(Double value, Units units) {
+//        switch (units) {
+//            case FAHRENHEIT:
+//                return value * FAHRENHEIT;
+//            case CELSIUS:
+//                return value * CELSIUS + 32;
+//        }
+//        return 0;
+//    }
+
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MeasurementQuantity that = (MeasurementQuantity) o;
-        return units == that.units &&
-                Objects.equals(value, that.value) &&
+        return Objects.equals(value, that.value) &&
                 type == that.type;
     }
-
 }
