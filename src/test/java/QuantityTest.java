@@ -275,4 +275,12 @@ public class QuantityTest {
         UnitQuantity unitQuantity2 = new UnitQuantity(1000.0, Units.KILOGRAMS);
         Assert.assertEquals(unitQuantity.value, unitQuantity2.value);
     }
+    @Test
+    public void givenOneTonneAndOneThousandGrams_WhenAdded_ShouldReturnOneThousandOneKilograms() throws QuantityMeasurementException {
+        UnitQuantity unitQuantity = new UnitQuantity(1.0, Units.TONNE);
+        UnitQuantity unitQuantity2 = new UnitQuantity(1000.0, Units.GRAMS);
+        UnitQuantity unitQuantity3 = new UnitQuantity(1001.0, Units.KILOGRAMS);
+        double result = quantityMeasurement.addUnit(unitQuantity,unitQuantity2);
+        Assert.assertEquals(unitQuantity3.value, result, 0.1);
+    }
 }
