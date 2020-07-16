@@ -44,12 +44,11 @@ public class QuantityTest {
 
     @Test
     public void givenReferenceObject_WhenEqual_ShouldReturnTrue() {
-        Assert.assertEquals(measurementQuantity, measurementQuantity);
+        Assert.assertEquals(converter, converter);
     }
 
     @Test
     public void givenSameTypeWhenCompare_ShouldReturnTrue() throws QuantityMeasurementException {
-
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(0.0, Units.FEET);
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(0.0, Units.FEET);
         Assert.assertEquals(measurementQuantity2, measurementQuantity);
@@ -295,5 +294,17 @@ public class QuantityTest {
     public void givenTwoHundredTwelveFahrenheitTemperature_ShouldReturnHundredCelsius() throws QuantityMeasurementException {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(212.0, Units.FAHRENHEIT);
         Assert.assertEquals( 100.0, measurementQuantity.value, 0.0);
+    }
+
+    @Test
+    public void givenOneFeetAndTwoGallon_WhenAdded_ShouldReturnFourteenInch() {
+        try {
+            MeasurementQuantity measurementQuantity = new MeasurementQuantity(1.0, Units.FEET);
+            MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(2.0, Units.GALLON);
+            double result = converter.addUnit(measurementQuantity, measurementQuantity2);
+        } catch (QuantityMeasurementException e) {
+            System.out.println(e.getMessage());
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.TYPE_MISTMATCH, e.type);
+        }
     }
 }
