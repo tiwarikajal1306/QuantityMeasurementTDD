@@ -318,5 +318,15 @@ public class QuantityTest {
             Assert.assertEquals(QuantityMeasurementException.ExceptionType.NEGATIVE_VALUE, e.type);
         }
     }
-
+    @Test
+    public void givenOneLitre_And12Inch_ShouldReturnConvertedResult()  {
+        try {
+            MeasurementQuantity measurementQuantity = new MeasurementQuantity(1.0, Units.LITRES);
+            MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(12.0, Units.INCH);
+            boolean result = measurementQuantity.comparing(measurementQuantity, measurementQuantity2);
+            Assert.assertTrue(result);
+        } catch (QuantityMeasurementException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
