@@ -13,7 +13,7 @@ public enum Units {
     public MeasurementType type;
     public Double constantValue;
 
-        Units(Double constantValue, MeasurementType type) {
+    Units(Double constantValue, MeasurementType type) {
             this.constantValue = constantValue;
             this.type = type;
         }

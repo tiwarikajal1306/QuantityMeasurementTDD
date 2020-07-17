@@ -1,9 +1,8 @@
-package com.quantitymeasurementtddproblem.model;
+package com.quantitymeasurementtddproblem.services;
 
 import com.quantitymeasurementtddproblem.enums.MeasurementType;
 import com.quantitymeasurementtddproblem.enums.Units;
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
-import com.quantitymeasurementtddproblem.services.Converter;
 
 import java.util.Objects;
 

@@ -1,6 +1,6 @@
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
 import com.quantitymeasurementtddproblem.services.Converter;
-import com.quantitymeasurementtddproblem.model.MeasurementQuantity;
+import com.quantitymeasurementtddproblem.services.MeasurementQuantity;
 import com.quantitymeasurementtddproblem.enums.Units;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,11 +11,6 @@ public class QuantityTest {
     MeasurementQuantity measurementQuantity = new MeasurementQuantity();
     Converter converter = new Converter();
 
-    /**
-     * Test case for Feet to Inch
-     *
-     * @throws QuantityMeasurementException
-     */
     @Test
     public void givenOneFeet_And12Inch_ShouldReturnConvertedResult() throws QuantityMeasurementException {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(1.0, Units.FEET);
@@ -57,8 +52,8 @@ public class QuantityTest {
     @Test
     public void givenSameType2WhenCompare_ShouldReturnTrue() throws QuantityMeasurementException {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(0.0, Units.FEET);
-        Integer value1 = 34;
-        Assert.assertNotEquals(measurementQuantity.getClass(), value1.getClass());
+        Converter value1 = new Converter();
+        Assert.assertNotEquals(measurementQuantity, value1);
     }
 
     @Test
@@ -68,11 +63,6 @@ public class QuantityTest {
         Assert.assertNotEquals(measurementQuantity, measurementQuantity2);
     }
 
-    /**
-     * Test for Inch
-     *
-     * @throws QuantityMeasurementException
-     */
     @Test
     public void given0InchAnd0Inch_ShouldReturnEqual() throws QuantityMeasurementException {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(0.0, Units.INCH);
@@ -106,7 +96,7 @@ public class QuantityTest {
     public void givenSameTypeWhenCompare_ShouldReturnEqual() throws QuantityMeasurementException {
         MeasurementQuantity measurementQuantity = new MeasurementQuantity(0.0, Units.INCH);
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(0.0, Units.INCH);
-        Assert.assertEquals(measurementQuantity.getClass(), measurementQuantity2.getClass());
+        Assert.assertEquals(measurementQuantity, measurementQuantity2);
     }
 
     @Test
@@ -115,13 +105,6 @@ public class QuantityTest {
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(2.0, Units.INCH);
         Assert.assertNotEquals(measurementQuantity, measurementQuantity2);
     }
-
-    /**
-     * Test case for Feet to yard conversion
-     *
-     * @throws QuantityMeasurementException
-     */
-
 
     @Test
     public void givenSameYardValue_ShouldReturnEqual() throws QuantityMeasurementException {
@@ -171,12 +154,6 @@ public class QuantityTest {
         MeasurementQuantity measurementQuantity2 = new MeasurementQuantity(1.0, Units.YARD);
         Assert.assertEquals(measurementQuantity, measurementQuantity2);
     }
-
-    /**
-     * Test case for Inch to centimeter
-     *
-     * @throws QuantityMeasurementException
-     */
 
     @Test
     public void givenTwoInchAndFiveCentimeter_WhenCompare_ShouldReturnTrue() throws QuantityMeasurementException {

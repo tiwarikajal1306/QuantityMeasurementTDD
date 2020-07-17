@@ -1,7 +1,6 @@
 package com.quantitymeasurementtddproblem.services;
 
 import com.quantitymeasurementtddproblem.exception.QuantityMeasurementException;
-import com.quantitymeasurementtddproblem.model.MeasurementQuantity;
 import com.quantitymeasurementtddproblem.enums.Units;
 
 public class Converter {
