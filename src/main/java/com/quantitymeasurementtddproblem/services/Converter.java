@@ -23,7 +23,5 @@ public class Converter {
             }
                 double result = value.value + value2.value;
                 return result;
-
-        // double result = value.value + value2.value;
     }
 }

@@ -318,4 +318,5 @@ public class QuantityTest {
             Assert.assertEquals(QuantityMeasurementException.ExceptionType.NEGATIVE_VALUE, e.type);
         }
     }
+
 }
